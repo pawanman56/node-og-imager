@@ -13,6 +13,7 @@ const templateHTML = `
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1' shrink-to-fit=no>
+    <meta property=”og:image” content=”https://{{your_domain.com}}/ogimage?title=Open%20Graph%20Image%20Generator%20with%20NodeJS&tags[]=nodejs&tags[]=og-image&path=blog.yourdomain.com/open-graph-image-generator-with-nodejs&logoUrl={{your_logo_url}}”>
     <style>{{styles}}</style>
 </head>
 <body id="body">
@@ -25,11 +26,13 @@ const templateHTML = `
             {{/if}}
         </div>
 
-        <div class="title">
+        <div class="title">{{title}}</div>
+
+        <div>
             {{#if tags}}
                 <ul class="tags">
                     {{#each tags}}
-                        <li class="tag-item">{{this}}</li>
+                        <li class="tag-item">#{{this}}</li>
                     {{/each}}
                 </ul>
             {{/if}}
@@ -97,6 +100,13 @@ main {
     font-style: italic;
     text-decoration: wavy;
     font-variant: unicase;
+}
+
+.title {
+    font-size: {{fontSize}};
+    text-transform: capitalize;
+    margin: 0.25rem 0;
+    font-weight: bold;
 }
 
 .tags {
